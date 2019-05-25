@@ -1,0 +1,79 @@
+// NOTES:
+// 3 sekcije: plastika, globalno zagrevanje, seca drveca
+// 1. sekcija: plastika
+// 		- koliko plasticnih flasa si iskoristio danas? i koliko si tih flasa reciklirao?
+// 2. sekcija: globalno zagrevanje
+// 		- koliko cesto kupujes dezodorans sa freonima i sta god vec? (interval: )
+// 		- ostavljas li kuci ostavljeno svetlo?
+//		- da li gasis vodu dok peres zube?
+// 		- koje sijalice korisis? boze zdravlje: LED
+// 3. sekcija: seca drveca
+// 		- koliko si drveca zasadio za zivota?
+// postoji opcija da napravis nalog
+
+
+
+// DNEVNIK + SMERNICE (u vidu pitanja i dodatnih objasnjenja ;), to je i srz projekta)
+// razvijanje ekoloske svesti
+// drzava koja najvise reciklira (prosek po glavi stanovnika) dobija donaciju za EKO razvoj | UNICEF
+
+// Entities: START
+// User entity already exists
+
+
+// pojasnjenje za svaki od odgovora
+// dodatno pojasnjenje za svaku od sekcija
+entity Sekcija {
+	naziv String maxlength(64),
+    slika ImageBlob,
+    pojasnjenje TextBlob
+}
+
+entity Pitanje {
+	tekst String maxlength(256),
+    redniBroj Integer
+}
+
+entity Odgovor {
+	tekst String maxlength(64),
+    tacan Boolean
+}
+
+entity Pojasnjenje {
+	tekst TextBlob
+}
+
+enum TipPoena {
+	RECIKLAZA, SADNJA, ENERGIJA
+}
+
+entity Drzava {
+	naziv String maxlength(64),
+    slika ImageBlob
+}
+
+entity Poen {
+	tip TipPoena
+}
+// Entities: END
+
+
+// Relations: START
+relationship ManyToOne {
+	Pitanje{sekcija(naziv)} to Sekcija{pitanja},
+    Odgovor{pitanje} to Pitanje{odgovori},
+    Poen{korisnik} to User,
+    Poen{drzava} to Drzava
+}
+
+relationship OneToOne {
+	Odgovor{pojasnjenje} to Pojasnjenje{odgovor}
+}
+// Relations: END
+
+// Options: START
+dto * with mapstruct
+service * with serviceClass
+paginate * with infinite-scroll
+filter *
+// Options: END
