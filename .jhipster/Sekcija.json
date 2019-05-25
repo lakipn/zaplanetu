@@ -1,0 +1,40 @@
+{
+    "name": "Sekcija",
+    "fields": [
+        {
+            "fieldName": "naziv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 64
+        },
+        {
+            "fieldName": "slika",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "pojasnjenje",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "pitanje",
+            "otherEntityRelationshipName": "sekcija",
+            "relationshipName": "pitanja"
+        }
+    ],
+    "changelogDate": "20190525200329",
+    "entityTableName": "sekcija",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

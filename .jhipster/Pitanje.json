@@ -1,0 +1,41 @@
+{
+    "name": "Pitanje",
+    "fields": [
+        {
+            "fieldName": "tekst",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "redniBroj",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "sekcija",
+            "otherEntityRelationshipName": "pitanja",
+            "relationshipName": "sekcija",
+            "otherEntityField": "naziv"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "odgovor",
+            "otherEntityRelationshipName": "pitanje",
+            "relationshipName": "odgovori"
+        }
+    ],
+    "changelogDate": "20190525200330",
+    "entityTableName": "pitanje",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

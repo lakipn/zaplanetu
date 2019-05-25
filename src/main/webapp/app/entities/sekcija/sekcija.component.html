@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span>Sekcijas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-sekcija" [routerLink]="['/sekcija/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Sekcija
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="sekcijas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="naziv"><span>Naziv</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="slika"><span>Slika</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pojasnjenje"><span>Pojasnjenje</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let sekcija of sekcijas ;trackBy: trackId">
+                <td><a [routerLink]="['/sekcija', sekcija.id, 'view' ]">{{sekcija.id}}</a></td>
+                <td>{{sekcija.naziv}}</td>
+                <td>
+                    <a *ngIf="sekcija.slika" (click)="openFile(sekcija.slikaContentType, sekcija.slika)">
+                        <img [src]="'data:' + sekcija.slikaContentType + ';base64,' + sekcija.slika" style="max-height: 30px;" alt="sekcija image"/>
+                    </a>
+                    <span *ngIf="sekcija.slika">{{sekcija.slikaContentType}}, {{byteSize(sekcija.slika)}}</span>
+                </td>
+                <td>{{sekcija.pojasnjenje}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/sekcija', sekcija.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/sekcija', sekcija.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'sekcija', { outlets: { popup: sekcija.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

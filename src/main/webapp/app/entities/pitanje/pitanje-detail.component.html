@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pitanje">
+            <h2><span>Pitanje</span> {{pitanje.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Tekst</span></dt>
+                <dd>
+                    <span>{{pitanje.tekst}}</span>
+                </dd>
+                <dt><span>Redni Broj</span></dt>
+                <dd>
+                    <span>{{pitanje.redniBroj}}</span>
+                </dd>
+                <dt><span>Sekcija</span></dt>
+                <dd>
+                    <div *ngIf="pitanje.sekcijaId">
+                        <a [routerLink]="['/sekcija', pitanje.sekcijaId, 'view']">{{pitanje.sekcijaNaziv}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pitanje', pitanje.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

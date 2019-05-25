@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-odgovor-heading">Create or edit a Odgovor</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!odgovor.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tekst">Tekst</label>
+                    <input type="text" class="form-control" name="tekst" id="field_tekst"
+                           formControlName="tekst"/>
+                    <div *ngIf="editForm.get('tekst').invalid && (editForm.get('tekst').dirty || editForm.get('tekst').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('tekst').errors.maxlength">
+                        This field cannot be longer than 64 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tacan">Tacan</label>
+                    <input type="checkbox" class="form-control" name="tacan" id="field_tacan"
+                           formControlName="tacan"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pojasnjenje">Pojasnjenje</label>
+                    <select class="form-control" id="field_pojasnjenje" name="pojasnjenje" formControlName="pojasnjenjeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pojasnjenjeOption.id" *ngFor="let pojasnjenjeOption of pojasnjenjes; trackBy: trackPojasnjenjeById">{{pojasnjenjeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pitanje">Pitanje</label>
+                    <select class="form-control" id="field_pitanje" name="pitanje" formControlName="pitanjeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pitanjeOption.id" *ngFor="let pitanjeOption of pitanjes; trackBy: trackPitanjeById">{{pitanjeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

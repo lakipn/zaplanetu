@@ -11,6 +11,15 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190525200329_added_entity_Sekcija.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190525200330_added_entity_Pitanje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190525200331_added_entity_Odgovor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190525200332_added_entity_Pojasnjenje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190525200333_added_entity_Drzava.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190525200334_added_entity_Poen.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190525200330_added_entity_constraints_Pitanje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190525200331_added_entity_constraints_Odgovor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190525200334_added_entity_constraints_Poen.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

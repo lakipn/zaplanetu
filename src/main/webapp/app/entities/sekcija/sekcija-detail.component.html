@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sekcija">
+            <h2><span>Sekcija</span> {{sekcija.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Naziv</span></dt>
+                <dd>
+                    <span>{{sekcija.naziv}}</span>
+                </dd>
+                <dt><span>Slika</span></dt>
+                <dd>
+                    <div *ngIf="sekcija.slika">
+                        <a (click)="openFile(sekcija.slikaContentType, sekcija.slika)">
+                            <img [src]="'data:' + sekcija.slikaContentType + ';base64,' + sekcija.slika" style="max-width: 100%;" alt="sekcija image"/>
+                        </a>
+                        {{sekcija.slikaContentType}}, {{byteSize(sekcija.slika)}}
+                    </div>
+                </dd>
+                <dt><span>Pojasnjenje</span></dt>
+                <dd>
+                    <span>{{sekcija.pojasnjenje}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sekcija', sekcija.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

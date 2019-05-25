@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="drzava">
+            <h2><span>Drzava</span> {{drzava.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Naziv</span></dt>
+                <dd>
+                    <span>{{drzava.naziv}}</span>
+                </dd>
+                <dt><span>Slika</span></dt>
+                <dd>
+                    <div *ngIf="drzava.slika">
+                        <a (click)="openFile(drzava.slikaContentType, drzava.slika)">
+                            <img [src]="'data:' + drzava.slikaContentType + ';base64,' + drzava.slika" style="max-width: 100%;" alt="drzava image"/>
+                        </a>
+                        {{drzava.slikaContentType}}, {{byteSize(drzava.slika)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/drzava', drzava.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

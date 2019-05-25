@@ -1,0 +1,43 @@
+{
+    "name": "Odgovor",
+    "fields": [
+        {
+            "fieldName": "tekst",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 64
+        },
+        {
+            "fieldName": "tacan",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "pojasnjenje",
+            "otherEntityRelationshipName": "odgovor",
+            "relationshipName": "pojasnjenje",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "pitanje",
+            "otherEntityRelationshipName": "odgovori",
+            "relationshipName": "pitanje",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190525200331",
+    "entityTableName": "odgovor",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

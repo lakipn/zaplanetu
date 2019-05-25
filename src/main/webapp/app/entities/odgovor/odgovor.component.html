@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span>Odgovors</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-odgovor" [routerLink]="['/odgovor/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Odgovor
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="odgovors">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tekst"><span>Tekst</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tacan"><span>Tacan</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pojasnjenjeId"><span>Pojasnjenje</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pitanjeId"><span>Pitanje</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let odgovor of odgovors ;trackBy: trackId">
+                <td><a [routerLink]="['/odgovor', odgovor.id, 'view' ]">{{odgovor.id}}</a></td>
+                <td>{{odgovor.tekst}}</td>
+                <td>{{odgovor.tacan}}</td>
+                <td>
+                    <div *ngIf="odgovor.pojasnjenjeId">
+                        <a [routerLink]="['../pojasnjenje', odgovor.pojasnjenjeId , 'view' ]" >{{odgovor.pojasnjenjeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="odgovor.pitanjeId">
+                        <a [routerLink]="['../pitanje', odgovor.pitanjeId , 'view' ]" >{{odgovor.pitanjeId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/odgovor', odgovor.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/odgovor', odgovor.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'odgovor', { outlets: { popup: odgovor.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{
+    "name": "Pojasnjenje",
+    "fields": [
+        {
+            "fieldName": "tekst",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "odgovor",
+            "otherEntityRelationshipName": "pojasnjenje",
+            "relationshipName": "odgovor",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190525200332",
+    "entityTableName": "pojasnjenje",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

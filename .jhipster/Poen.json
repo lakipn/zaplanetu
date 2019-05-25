@@ -1,0 +1,35 @@
+{
+    "name": "Poen",
+    "fields": [
+        {
+            "fieldName": "tip",
+            "fieldType": "TipPoena",
+            "fieldValues": "RECIKLAZA,SADNJA,ENERGIJA"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "poen",
+            "relationshipName": "korisnik",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "drzava",
+            "otherEntityRelationshipName": "poen",
+            "relationshipName": "drzava",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190525200334",
+    "entityTableName": "poen",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
