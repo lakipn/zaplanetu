@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "ZaPlanetu",
+    "packageName": "com.girlscancode",
+    "packageFolder": "com/girlscancode",
+    "serverPort": 8080,
+    "serviceDiscoveryType": false,
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "enableTranslation": false,
+    "nativeLanguage": "sr",
+    "languages": [
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "6.0.1",
+    "jwtSecretKey": "NDYwOTVkN2I0MzBhYTNhYzMzYjAyMGIwZTliNmZmNDY3YjI2NjNmNWZkMjYwNWQwNzNkZmZmMjRiNTQ5YjZiYmUzMDdmOGU5YTJlNzJhOThkMDkwYzIzNmVkZjE4ZDM3NTMyOTgwNmE5MjU4YzRjZjJlY2M5MzMwYjk0NzI0NzE=",
+    "clientTheme": "none",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "lakipn",
+  "repository-name": "zaplanetu"
+}
