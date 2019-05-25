@@ -43,6 +43,14 @@ public class CacheConfiguration {
             createCache(cm, com.girlscancode.domain.User.class.getName());
             createCache(cm, com.girlscancode.domain.Authority.class.getName());
             createCache(cm, com.girlscancode.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.girlscancode.domain.Sekcija.class.getName());
+            createCache(cm, com.girlscancode.domain.Sekcija.class.getName() + ".pitanjas");
+            createCache(cm, com.girlscancode.domain.Pitanje.class.getName());
+            createCache(cm, com.girlscancode.domain.Pitanje.class.getName() + ".odgovoris");
+            createCache(cm, com.girlscancode.domain.Odgovor.class.getName());
+            createCache(cm, com.girlscancode.domain.Pojasnjenje.class.getName());
+            createCache(cm, com.girlscancode.domain.Drzava.class.getName());
+            createCache(cm, com.girlscancode.domain.Poen.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
